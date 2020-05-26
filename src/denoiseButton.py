@@ -32,7 +32,7 @@ class Denoiser(threading.Thread):
                 srcfile, strength, albedo, normal, outfile)
         else:
             cmd = "cdenoise.exe %s -strength %s -output %s" % (
-                srcfile,  outfile)
+                srcfile,  strength, outfile)
         return os.system(cmd)
 
 
@@ -99,4 +99,5 @@ if __name__ == "__main__":
             locCurrent += threadsNum
             for i in prosser:
                 i.start()
+            for i in prosser:
                 i.join()
